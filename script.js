@@ -20,8 +20,13 @@ generateBtn.addEventListener("click", writePassword);
 //THEN I select which criteria to include in the password
 // create an array (data structure)
 
-let arraychars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-/:;<=>?@[\]^_`{|}~'
+let arraychars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-/:;<=>?@[\]^_`{|}~1234567890'
 
+
+
+Math.random()
+
+for (let i = 0; i < 128; i = i + 1)
 
 
 //Step 3:
