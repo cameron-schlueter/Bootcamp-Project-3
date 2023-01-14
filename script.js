@@ -10,9 +10,6 @@ var generateBtn = document.querySelector("#generate");
 // Referenceing html to eventually create text, ID of generate in HTML , selecting the button with #
 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 // line 9 first, for the HTML or it does nothing
 
 //Step 2:
@@ -20,35 +17,102 @@ generateBtn.addEventListener("click", writePassword);
 //THEN I select which criteria to include in the password
 // create an array (data structure)
 
-let arraychars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-/:;<=>?@[\]^_`{|}~1234567890'
+let uppercase = ('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-/:;<=>?@[\]^_`{|}~1234567890');
+let undercase = ('abcdefghijklmnopqrstuvwxyz');
+let numbers = ('1234567890');
+let characters = ('!#$%&()*+,-/:;<=>?@[\]^_`{|}~')
 
+var criteria = document.getElementById("#uppercase");
+for (var i = 0; i < criteria.length; i++) {
+    criteria[i].onchange = function() {
+        if (this.checked) {
+            // Checkbox is checked. Perform the desired action.
+            console.log(this.value + ' is selected');
+        } else {
+            // Checkbox is not checked. Perform the desired action.
+            console.log(this.value + ' is not selected');
+        }
+    }
+}
+var criteria = document.getElementsById("#lowercase");
+for (var i = 0; i < criteria.length; i++) {
+    criteria[i].onchange = function() {
+        if (this.checked) {
+            // Checkbox is checked. Perform the desired action.
+            console.log(this.value + ' is selected');
+        } else {
+            // Checkbox is not checked. Perform the desired action.
+            console.log(this.value + ' is not selected');
+        }
+    }
+}
+var criteria = document.getElementsById("#numbers");
+for (var i = 0; i < criteria.length; i++) {
+    criteria[i].onchange = function() {
+        if (this.checked) {
+            // Checkbox is checked. Perform the desired action.
+            console.log(this.value + ' is selected');
+        } else {
+            // Checkbox is not checked. Perform the desired action.
+            console.log(this.value + ' is not selected');
+        }
+    }
+}
+var criteria = document.getElementsByName("#characters");
+for (var i = 0; i < criteria.length; i++) {
+    criteria[i].onchange = function() {
+        if (this.checked) {
+            // Checkbox is checked. Perform the desired action.
+            console.log(this.value + ' is selected');
+        } else {
+            // Checkbox is not checked. Perform the desired action.
+            console.log(this.value + ' is not selected');
+        }
+    }
+}
 
+var password = ''
 
-Math.random()
+for (var i = 0; i < length; i++) {
 
-for (let i = 0; i < 128; i = i + 1)
+var characterSet = "";
+    if (includeLowercase) {
+      characterSet += lowercase;
+    }
+    if (includeUppercase) {
+      characterSet += uppercase;
+    }
+    if (includeNumbers) {
+      characterSet += numbers;
+    }
+    if (includeSpecial) {
+      characterSet += characters;
+    }
 
-
-//Step 3:
-//WHEN prompted for the length of the password
-//THEN I choose a length of at least 8 characters and no more than 128 characters
-
-Math.floor(8)
-Math.ceil(128)
-
-//Step 4:
-//WHEN asked for character types to include in the password
-//THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-
-
-//Step 5:
-//WHEN I answer each prompt
-//THEN my input should be validated and at least one character type should be selected
+    var index = Math.floor(Math.random() * characterSet.length);
+    password += characterSet.charAt(index);
+  
+}
+function generatePassword(includeLowercase, includeUppercase, includeNumbers, includeSpecial) {
+  var passwordLength = document.getElementById("#password-length");
+  var length = parseInt(passwordLength.value) || 12;
+  if (length < 8 || length > 128) {
+    length = 12;
+    passwordLength.value = 12;
+  
+  }
+// Write password to the #password input
+var generateButton = document.getElementById("#generate");
+generateButton.addEventListener("click", function() {
+  var password = generatePassword(12, true, true, true, true);
+  var passwordField = document.getElementById("#password");
+  passwordField.textContent = password;
+  return password;
+});
 
 //Step 6:
 //WHEN all prompts are answered
 //THEN a password is generated that matches the selected criteria
-
 
 
 //Step 7:
@@ -57,17 +121,4 @@ Math.ceil(128)
 
 
 
-// Write password to the #password input
-function writePassword() {
-  var passwordText = document.querySelector("#password");
-  passwordText.value = arraychars;
- 
 }
-
-function generatePassword() {
-  var generatePassword = document.getElementById('#password')
-  return generatePassword('#password');
-}
-
-
-
